@@ -5,7 +5,7 @@ var n = document.querySelectorAll(".drum").length;
 for (var i = 0; i < n; i++) {
     document.querySelectorAll(".drum")[i].addEventListener("click", function () {
         var wh=this.innerHTML;
-       
+        animation(wh);
         
         switch (wh) {
             case "w":
@@ -45,6 +45,7 @@ for (var i = 0; i < n; i++) {
 }
 document.addEventListener("keydown",function(event){
     var sat=event.key;
+    animation(sat);
     switch (sat) {
         case "w":
          var audio = new Audio("sounds/crash.mp3");
@@ -81,4 +82,11 @@ document.addEventListener("keydown",function(event){
     }
 
 });
- 
+function animation(current){
+   var active= document.querySelector("."+current);
+   active.classList.add("pressed");
+   setTimeout(function() {
+    active.classList.remove("pressed");
+    
+   },100);
+}
